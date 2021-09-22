@@ -33,31 +33,28 @@ public class Main {
             document1.appendChild(root);
             document.getDocumentElement().normalize();
             System.out.println("Корневой элемент: " + document.getDocumentElement().getNodeName());
-            // получаем узлы с именем Wagon
-            // теперь XML полностью загружен в память
-            // в виде объекта Document
-            NodeList CargoNodeList = document.getElementsByTagName("CargoWagon");     //создаем список грузовых вагонов
-            NodeList PassengerNodeList = document.getElementsByTagName("PassengerWagon");     //создаем список пассажирских вагонов
+            // теперь XML полностью загружен в память в виде объекта document класса Document
+            NodeList CargoNodeList = document.getElementsByTagName("CargoWagon");     // достаем информацию о грузовых вагонах
+            NodeList PassengerNodeList = document.getElementsByTagName("PassengerWagon");     // достаем информацию о пассажирских вагонах
 
-            // создадим из него список объектов CargoWagon
+            // создаем список грузовых вагонов объектов класса Train
             List<Train> ctrainList = new ArrayList<Train>();
             for (int i = 0; i < CargoNodeList.getLength(); i++) {
                 ctrainList.add(getCTrain(CargoNodeList.item(i)));
             }
-            // и PassengerWagon
+            // и пассажирских вагонов
             List<Train> ptrainList = new ArrayList<Train>();
             for (int i = 0; i < PassengerNodeList.getLength(); i++) {
                 ptrainList.add(getPTrain(PassengerNodeList.item(i)));
             }
-            // печатаем в консоль информацию по каждому объекту Wagon
+            // печатаем в консоль информацию по каждому вагону
             for (Train ctrain : ctrainList) {
                 System.out.println(ctrain.toString());
-
             }
             for (Train ptrain : ptrainList) {
                 System.out.println(ptrain.toString());
             }
-            //собираем поезд
+            // собираем поезд случайным образом
             int TotalTonnage = 0;
             int TotalPassengers = 0;
             int WagonNumber = a + (int) (Math.random() * b); // случайная генерация числа вагонов в поезде и типа поезда
@@ -76,7 +73,7 @@ public class Main {
                     wagon.setAttribute(train.getName(), Integer.toString(train.getTonnage()));
                 }
                 System.out.println("Train's total tonnage = " + TotalTonnage);
-                Element total = document1.createElement("Total");
+                Element total = document1.createElement("Total");   // экспорт результата в xml-файл
                 root.appendChild(total);
                 total.setAttribute("Tonnage_sum", Integer.toString(TotalTonnage));
             } else {
@@ -95,7 +92,7 @@ public class Main {
                 root.appendChild(total);
                 total.setAttribute("Passengers_sum", Integer.toString(TotalPassengers));
             }
-            //создание XML файла
+            // создание XML файла
             Transformer t = TransformerFactory.newInstance().newTransformer();
             t.setOutputProperty(OutputKeys.INDENT, "yes");
             t.transform(new DOMSource(document1), new StreamResult(new FileOutputStream("output.xml")));
@@ -104,7 +101,7 @@ public class Main {
         }
     }
 
-    // создаем из узла документа объект Wagon
+    // создаем из узла документа объект класса CargoTrain
     private static CargoTrain getCTrain(Node node) {
         CargoTrain ctrain = new CargoTrain();
         if (node.getNodeType() == Node.ELEMENT_NODE) {
