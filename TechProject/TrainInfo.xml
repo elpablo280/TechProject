@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<TrainInfo>
+    <WagonTypes>
+        <CargoWagon>
+                <name>CargoWagon1</name>
+                <passengers>0</passengers>
+                <tonnage>10</tonnage>
+        </CargoWagon>
+        <CargoWagon>
+                <name>CargoWagon2</name>
+                <passengers>0</passengers>
+                <tonnage>15</tonnage>
+        </CargoWagon>
+        <PassengerWagon>
+                <name>PassengerWagon1</name>
+                <passengers>20</passengers>
+                <tonnage>0</tonnage>
+        </PassengerWagon>
+        <PassengerWagon>
+                <name>PassengerWagon2</name>
+                <passengers>30</passengers>
+                <tonnage>0</tonnage>
+        </PassengerWagon>
+    </WagonTypes>
+</TrainInfo>

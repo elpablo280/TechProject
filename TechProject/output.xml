@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Train>
+    <Wagon PassengerWagon1="20"/>
+    <Wagon PassengerWagon1="20"/>
+    <Wagon PassengerWagon2="30"/>
+    <Wagon PassengerWagon1="20"/>
+    <Wagon PassengerWagon2="30"/>
+    <Wagon PassengerWagon2="30"/>
+    <Total Passengers_sum="150"/>
+</Train>
